@@ -33,5 +33,3 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     return HttpResponse(template.render(context, request))
 
 
-def healthCheck(request):
-    return HttpResponse('ok')
