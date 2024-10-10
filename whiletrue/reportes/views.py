@@ -31,3 +31,7 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     
     render(request, 'reporte_tabla.html', context=context)
     return HttpResponse(template.render(context, request))
+
+
+def healthCheck(request):
+    return HttpResponse('ok')
