@@ -20,12 +20,7 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
         raise Http404("Cantidad pedida inválida, se esperaba un número mayor a cero")
    
     if not UNSAFE_CACHE:
-         # Si el usuario pide todos los registros
-        if cantidad == '*':
-            datos = Reporte.objects.all()  # Obtener todos los registros
-        else:
-            # Si se especifica un número, limitar la cantidad de registros a devolver
-            datos = Reporte.objects.all()[:int(cantidad)]
+        datos = Reporte.objects.all()  # Obtener todos los registros
             
         # Crear un flujo de datos en memoria
         output = io.StringIO()
@@ -40,7 +35,13 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
         
         # Guardar el stream en el caché (puedes usar el contenido de output.getvalue() donde necesites)
         UNSAFE_CACHE = output.getvalue()
-            
+
+    # Si el usuario pide todos los registros
+    if cantidad == '*':
+        threshold = 6000  
+    else:
+        threshold = int(cantidad)  
+    
     # Leer el CSV del caché y cargar los datos al contexto
     input_stream = io.StringIO(UNSAFE_CACHE)
     reader = csv.reader(input_stream)
@@ -49,7 +50,7 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     next(reader)
     
     # Cargar los datos del CSV en la variable `datos`
-    datos = [{'cuenta': row[0], 'fecha': row[1], 'monto': row[2], 'descripcion': row[3]} for row in reader]
+    datos = [{'cuenta': row[0], 'fecha': row[1], 'monto': row[2], 'descripcion': row[3]} for row, _ in zip(reader, range(threshold))]
     
     # Traer el template
     template = loader.get_template('reporte_tabla.html')
