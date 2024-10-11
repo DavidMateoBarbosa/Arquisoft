@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import io
 
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, Http404
@@ -8,7 +9,10 @@ from django.template import loader
 
 from .models import Reporte
 
+UNSAFE_CACHE = None
+
 def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
+    global UNSAFE_CACHE
     # Validar el parámetro cantidad
     if not cantidad.isdecimal() and cantidad != '*':
         raise Http404("Parámetro cantidad no es válido, se esperaba un número mayor a cero o en su defecto '*'")
@@ -21,15 +25,29 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     else:
         # Si se especifica un número, limitar la cantidad de registros a devolver
         datos = Reporte.objects.all()[:int(cantidad)]
-
+    if not UNSAFE_CACHE:
+        # Crear un flujo de datos en memoria
+        output = io.StringIO()
+        
+        # Crear el writer para escribir el CSV en el stream
+        writer = csv.writer(output)
+        writer.writerow(['cuenta', 'fecha', 'monto', 'descripcion'])  # Encabezados
+        
+        # Escribir los datos en el stream
+        for dato in datos:
+            writer.writerow([dato.cuenta, dato.fecha, dato.monto, dato.descripcion])
+        
+        # Guardar el stream en el caché (puedes usar el contenido de output.getvalue() donde necesites)
+        UNSAFE_CACHE = output.getvalue()
+            
+    
     #Traer el template
     template= loader.get_template('reporte_tabla.html')
     context = {
         'reportes': datos,
         'cantidad': cantidad,
     }
-    
-    render(request, 'reporte_tabla.html', context=context)
+
     return HttpResponse(template.render(context, request))
 
 
