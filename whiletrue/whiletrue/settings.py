@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whiletrue',
     'reportes',
+    'usuarios'
 ]
 
 MIDDLEWARE = [
