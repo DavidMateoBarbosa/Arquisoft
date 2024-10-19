@@ -5,17 +5,17 @@ class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = [
-            'user',
+            'username',
             'password',
-            'name',
+            'firstname',
             'lastname',
-            'email'
+            'email',
         ]
 
         labels = {
-            'user': 'User',
+            'username': 'Username',
             'password': 'Password',
-            'name':'Name',
+            'firstname':'Firstname',
             'lastname':'Lastname',
-            'email':'Email'
+            'email':'Email',
         }

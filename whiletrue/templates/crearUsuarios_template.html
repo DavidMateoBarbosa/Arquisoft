@@ -18,22 +18,22 @@
 <body>
     <div class="container">
         <h1>Formulario de Usuarios</h1>
-        <form action="URL_DEL_BACKEND" method="POST"> <!-- Reemplaza con la URL de tu backend -->
+        <form action="/users/usuariosCrear/" method="POST"> <!-- Reemplaza con la URL de tu backend -->
             <div class="form-group">
                 <label for="username">Nombre de Usuario</label>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="contraseña" required>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <label for="primer_nombre">Primer Nombre</label>
-                <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" required>
+                <label for="firstname">Primer Nombre</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" required>
             </div>
             <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" required>
+                <label for="lastname">Apellido</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -41,6 +41,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
+        <br>
+        <a href="/users/usuarios/" class="btn btn-success">Listado de usuarios</a>
     </div>
+    
 </body>
 </html>

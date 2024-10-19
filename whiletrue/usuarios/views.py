@@ -7,16 +7,16 @@ from django.core import serializers
 
 
 # Create your views here.
-def usuarios_obtener(request: HttpRequest) -> HttpResponse:  # da todos y jsonifica
-    return render(request, 'usuarios_template.html', context={'usuarios': serializers.serialize('json', Usuario.objects.all())})  # missing front
+def usuarios_obtener(request: HttpRequest) -> HttpResponse:
+    users = Usuario.objects.all()
+    return render(request, 'usuarios_template.html', context={'usuarios': users, 'cantidad': len(users)})  # missing front
     
 def usuarios_crear(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuarios/')  # Redirect after successful form submission
     else:
-        form = UsuarioForm()  # If it's a GET request, create an empty form
+        form = UsuarioForm()
 
     return render(request, 'crearUsuarios_template.html', context={'form': form}) 

@@ -32,14 +32,17 @@
                 {% for usuario in usuarios %}
                 <tr>
                     <td>{{ usuario.username }}</td>
-                    <td>{{ usuario.contraseña }}</td>
-                    <td>{{ usuario.primer_nombre }}</td>
-                    <td>{{ usuario.apellido }}</td>
+                    <td>{{ usuario.password }}</td>
+                    <td>{{ usuario.firstname }}</td>
+                    <td>{{ usuario.lastname }}</td>
                     <td>{{ usuario.email }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="/users/usuariosCrear/" class="btn btn-success">Crear Usuario</a>
     </div>
+    
+
 </body>
 </html>
