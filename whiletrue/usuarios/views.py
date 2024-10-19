@@ -19,4 +19,4 @@ def usuarios_crear(request: HttpRequest) -> HttpResponse:
     else:
         form = UsuarioForm()  # If it's a GET request, create an empty form
 
-    return render(request, 'crearxd.html', context={'form': form}) 
+    return render(request, 'crearUsuarios_template.html', context={'form': form}) 
