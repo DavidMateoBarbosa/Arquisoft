@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, Http404
 from django.template import loader
 
+from .forms import ReporteForm
 from .models import Reporte
 
 UNSAFE_CACHE = None
@@ -62,3 +63,11 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     return HttpResponse(template.render(context, request))
 
 
+def crear_reporte(request: HttpRequest) -> HttpRequest:
+    if request.method == 'POST':
+        form = ReporteForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ReporteForm()
+    return render(request, 'crear-reportes.html', context={'form': form})
