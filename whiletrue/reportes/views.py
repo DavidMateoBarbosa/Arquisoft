@@ -15,6 +15,7 @@ UNSAFE_CACHE = None
 def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     global UNSAFE_CACHE
     # Validar el parámetro cantidad
+    cantidad = '*'
     if not cantidad.isdecimal() and cantidad != '*':
         raise Http404("Parámetro cantidad no es válido, se esperaba un número mayor a cero o en su defecto '*'")
     if cantidad != '*' and int(cantidad) < 1:
