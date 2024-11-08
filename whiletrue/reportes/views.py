@@ -68,7 +68,7 @@ def crear_reporte(request: HttpRequest) -> HttpRequest:
     if request.method == 'POST':
         form = ReporteForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save()        
     else:
         form = ReporteForm()
     return render(request, 'crear-reportes.html', context={'form': form})
