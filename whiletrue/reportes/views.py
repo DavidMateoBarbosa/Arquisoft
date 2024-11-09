@@ -64,6 +64,11 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
     return HttpResponse(template.render(context, request))
 
 
+def exportar(request: HttpRequest) -> HttpResponse:
+    reportes = Reporte.objects.all()
+    return render(request, 'reporte_tabla.html', context={'reportes': reportes})
+
+
 def crear_reporte(request: HttpRequest) -> HttpRequest:
     if request.method == 'POST':
         form = ReporteForm(request.POST)

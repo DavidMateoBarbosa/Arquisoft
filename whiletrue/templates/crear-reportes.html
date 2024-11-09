@@ -19,7 +19,6 @@
     <div class="container">
         <h1>Formulario de Reportes</h1>
         <form action="/reportes-csv/crear/" method="POST"> <!-- Reemplaza con la URL de tu backend -->
-            {% csrf_token %}
             <div class="form-group">
                 <label for="cuenta">Cuenta</label>
                 <input type="text" class="form-control" id="cuenta" name="cuenta" required>
