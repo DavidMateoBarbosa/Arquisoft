@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Usuarios</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de Estudiantes </h1>
+        <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre de Estudiante</th>
+                    <th>Documento de identificacion</th>
+                    <th>Periodo Inscripcion</th>
+                    <th>Direccion</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estudiante in Estudiantes %}
+                <tr>
+                    <td>{{ estudiante.nombre}}</td>
+                    <td>{{ estudiante.documentoid }}</td>
+                    <td>{{ estudiante.periodo_inscripcion }}</td>
+                    <td>{{ estudiante.direccion }}</td>
+                    <td>{{ estudiante.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+    <a href="../matriculaCrear/" class="btn btn-success">Crear Usuario</a>
+</div>
+
+
+    
+
+</body>
+</html>

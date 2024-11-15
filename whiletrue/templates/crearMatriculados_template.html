@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Usuarios</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Solo estas columnas están dentro del container con clase .container -->
+        <div class="col-md-6">
+        <h1>Formulario de Matricula</h1>
+        <form action="/matriculados/matriculaCrear/" method="POST"> <!-- Reemplaza con la URL de tu backend -->
+            <div class="form-group">
+                <label for="nombre">Nombre de Estudiante</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="documentoid">Documento Id</label>
+                <input type="text" class="form-control" id="documentoid" name="documentoid" required>
+            </div>
+            <div class="form-group">
+                <label for="periodo_inscripcion">Periodo Inscripcion</label>
+                <input type="text" class="form-control" id="periodo_inscripcion" name="periodo_inscripcion" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Direccion</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+    </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <br>
+        <a href="/matriculados/matriculadosTotales/" class="btn btn-success">Listado de usuarios</a>
+    
+    
+</body>
+</html>

@@ -22,5 +22,6 @@ urlpatterns = [
     path('health/', views.health_check, name='health'),
     path('reportes-csv/', include('reportes.urls')),
     path('users/', include('usuarios.urls')),
+    path('matriculados/', include('Matriculas.urls')),
     path('health-check/', views.healthCheck),
 ]
