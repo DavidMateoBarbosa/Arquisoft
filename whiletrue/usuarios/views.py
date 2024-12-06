@@ -58,4 +58,5 @@ def usuarios_obtenerJson(request: HttpRequest) -> JsonResponse:
     ]
 
     # Devolver los datos en formato JSON
+    return render(request, 'usuarios_template.html', context={'usuarios': usuarios_con_montos, 'cantidad': len(usuarios_con_montos)})
     return JsonResponse({'usuarios': usuarios_con_montos})
