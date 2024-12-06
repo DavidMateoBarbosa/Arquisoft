@@ -20,6 +20,10 @@
         <h1>Formulario de Reportes</h1>
         <form action="/reportes-csv/crear/" method="POST"> <!-- Reemplaza con la URL de tu backend -->
             <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" required>
+            </div>
+            <div class="form-group">
                 <label for="cuenta">Cuenta</label>
                 <input type="text" class="form-control" id="cuenta" name="cuenta" required>
             </div>
@@ -28,8 +32,16 @@
                 <input type="date" class="form-control" id="fecha" name="fecha" required>
             </div>
             <div class="form-group">
-                <label for="monto">Monto</label>
+                <label for="monto">Monto 1</label>
                 <input type="number" step="0.01" class="form-control" id="monto" name="monto" required>
+            </div>
+            <div class="form-group">
+                <label for="monto2">Monto 2</label>
+                <input type="number" step="0.01" class="form-control" id="monto2" name="monto2" required>
+            </div>
+            <div class="form-group">
+                <label for="monto3">Monto 3</label>
+                <input type="number" step="0.01" class="form-control" id="monto3" name="monto3" required>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>

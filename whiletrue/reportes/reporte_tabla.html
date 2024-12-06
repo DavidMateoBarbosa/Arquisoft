@@ -8,6 +8,7 @@
     <table border="1">
         <thead>
             <tr>
+                <th>Usuario</th>
                 <th>Cuenta</th>
                 <th>Fecha</th>
                 <th>Monto1</th>
@@ -20,6 +21,7 @@
         <tbody>
             {% for reporte in reportes %}
             <tr>
+                <td>{{ reporte.usuario }}</td>
                 <td>{{ reporte.cuenta }}</td>
                 <td>{{ reporte.fecha }}</td>
                 <td>{{ reporte.monto }}</td>
