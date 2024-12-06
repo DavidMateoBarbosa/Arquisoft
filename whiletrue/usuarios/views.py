@@ -4,6 +4,7 @@ import requests
 from django.shortcuts import render, redirect
 from .models import Usuario
 from .forms import UsuarioForm
+from ..cypher import decrypt
 from django.core import serializers
 
 
@@ -35,7 +36,12 @@ def usuarios_obtenerJson(request: HttpRequest) -> JsonResponse:
         return JsonResponse({'error': f'Error al obtener datos de la API externa: {str(e)}'}, status=500)
 
     # Asegurar que los datos tengan la estructura esperada
-    montos = {item['username']: float(item.get('montototal', 0)) for item in data.get('reportes', [])}
+    data = data.get('reportes')
+    if data is not None:
+        data = decrypt(data)
+    else:
+        data = []
+    montos = {item['username']: float(item.get('montototal', 0)) for item in data}
     print(montos)
 
     # Obtener todos los usuarios de la base de datos
