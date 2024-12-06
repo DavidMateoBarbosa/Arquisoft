@@ -6,8 +6,8 @@ class Reporte(models.Model):
     fecha = models.DateField()
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     monto2 = models.DecimalField(max_digits=10, decimal_places=2)
-    monto3 = models.DecimalField(max_digits=10, decimal_places=2)
-    montototal = models.DecimalField(max_digits=10, decimal_places=2)
+    monto3 = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    montototal = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, editable=False)
     descripcion = models.TextField()
     
     def save(self, *args, **kwargs):

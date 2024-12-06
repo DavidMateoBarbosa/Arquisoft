@@ -6,6 +6,7 @@ import io
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, Http404
 from django.template import loader
+from django.http import JsonResponse
 
 from .forms import ReporteForm
 from .models import Reporte
@@ -67,6 +68,32 @@ def exportar(request: HttpRequest, cantidad: str = '*') -> HttpResponse:
 def exportar(request: HttpRequest) -> HttpResponse:
     reportes = Reporte.objects.all()
     return render(request, 'reporte_tabla.html', context={'reportes': reportes})
+
+
+
+
+def exportar_json(request: HttpRequest) -> JsonResponse:
+    # Obtener todos los reportes
+    reportes = Reporte.objects.all()
+    
+    # Convertir los reportes en una lista de diccionarios
+    datos = [
+        {
+            'username': reporte.usuario,
+            'cuenta': reporte.cuenta,
+            'fecha': reporte.fecha.strftime('%Y-%m-%d'),  # Formatear la fecha
+            'monto1': float(reporte.monto),  # Convertir a float para JSON
+            'monto2': float(reporte.monto2),
+            'monto3': float(reporte.monto3),
+            'montototal': float(reporte.montototal),  # Convertir a float
+            'descripcion': reporte.descripcion,
+        }
+        for reporte in reportes
+    ]
+    
+    # Devolver los datos como JSON
+    return JsonResponse({'reportes': datos})
+
 
 
 def crear_reporte(request: HttpRequest) -> HttpRequest:

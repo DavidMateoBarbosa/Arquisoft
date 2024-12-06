@@ -19,7 +19,10 @@
                 <tr>
                     <th>Cuenta</th>
                     <th>Fecha</th>
-                    <th>Monto</th>
+                    <th>Monto 1</th>
+                    <th>Monto 2</th>
+                    <th>Monto 3</th>
+                    <th>Monto Total</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
@@ -29,6 +32,9 @@
                         <td>{{ reporte.cuenta }}</td>
                         <td>{{ reporte.fecha }}</td>
                         <td>{{ reporte.monto }}</td>
+                        <td>{{ reporte.monto2 }}</td>
+                        <td>{{ reporte.monto3}}</td>
+                        <td>{{ reporte.montototal }}</td>
                         <td>{{ reporte.descripcion }}</td>
                     </tr>
                 {% empty %}
