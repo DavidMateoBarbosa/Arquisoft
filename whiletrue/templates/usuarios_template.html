@@ -23,20 +23,16 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Nombre de Usuario</th>
-                    <th>Contraseña</th>
-                    <th>Primer Nombre</th>
-                    <th>Apellido</th>
                     <th>Email</th>
+                    <th>Monto</th>
                 </tr>
             </thead>
             <tbody>
                 {% for usuario in usuarios %}
                 <tr>
                     <td>{{ usuario.username }}</td>
-                    <td>{{ usuario.password }}</td>
-                    <td>{{ usuario.firstname }}</td>
-                    <td>{{ usuario.lastname }}</td>
                     <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.monto }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
