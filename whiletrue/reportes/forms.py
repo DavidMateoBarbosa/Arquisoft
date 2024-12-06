@@ -9,12 +9,18 @@ class ReporteForm(forms.ModelForm):
             'cuenta',
             'fecha',
             'monto',
+            'monto2',
+            'monto3',
+            'montototal',
             'descripcion'
         ]
         labels = {
             'cuenta': 'Cuenta',
             'fecha': 'Fecha',
-            'monto': 'Monto',
+            'monto': 'Monto1',
+            'monto2': 'Monto2',
+            'monto3': 'Monto3',
+            'montototal': 'montototal',
             'descripcion': 'Descripcion'
         }
 
