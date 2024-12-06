@@ -4,7 +4,7 @@ import requests
 from django.shortcuts import render, redirect
 from .models import Usuario
 from .forms import UsuarioForm
-from ..cypher import decrypt
+from .cypher import decrypt
 from django.core import serializers
 
 

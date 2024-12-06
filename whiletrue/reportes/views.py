@@ -8,7 +8,7 @@ from django.http import HttpRequest, HttpResponse, Http404
 from django.template import loader
 from django.http import JsonResponse
 
-from ..cypher import encrypt
+from .cypher import encrypt
 from .forms import ReporteForm
 from .models import Reporte
 
