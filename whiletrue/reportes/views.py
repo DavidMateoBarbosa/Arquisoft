@@ -8,6 +8,7 @@ from django.http import HttpRequest, HttpResponse, Http404
 from django.template import loader
 from django.http import JsonResponse
 
+from ..cypher import encrypt
 from .forms import ReporteForm
 from .models import Reporte
 
@@ -91,8 +92,11 @@ def exportar_json(request: HttpRequest) -> JsonResponse:
         for reporte in reportes
     ]
     
-    # Devolver los datos como JSON
-    return JsonResponse({'reportes': datos})
+    # Cifrar los datos usando la función encrypt
+    encrypted_data = encrypt(datos)
+    
+    # Devolver los datos cifrados como JSON
+    return JsonResponse({'reportes': encrypted_data})
 
 
 
